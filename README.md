@@ -87,20 +87,17 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 2. Write a query to find tracks where the liveness score is above the average.
 3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
 ```sql
-WITH cte
-AS
-(SELECT 
-	album,
-	MAX(energy) as highest_energy,
-	MIN(energy) as lowest_energery
-FROM spotify
-GROUP BY 1
-)
+With cte as(
 SELECT 
-	album,
-	highest_energy - lowest_energery as energy_diff
-FROM cte
-ORDER BY 2 DESC
+    album, 
+    MAX(energy) as highest_energy,
+    Min(energy) as lowest_energy
+FROM
+    spotify
+group by 1)
+select album,highest_energy - lowest_energy as energy_diff
+from cte
+order by 2 desc;
 ```
    
 5. Find tracks where the energy-to-liveness ratio is greater than 1.2.
@@ -148,25 +145,18 @@ This optimization shows how indexing can drastically reduce query time, improvin
 ---
 
 ## Technology Stack
-- **Database**: PostgreSQL
+- **Database**: MySQL
 - **SQL Queries**: DDL, DML, Aggregations, Joins, Subqueries, Window Functions
-- **Tools**: pgAdmin 4 (or any SQL editor), PostgreSQL (via Homebrew, Docker, or direct installation)
+- **Tools**: PYTHON MySQL 
 
 ## How to Run the Project
-1. Install PostgreSQL and pgAdmin (if not already installed).
+1. Install MYSQL,PYTHON
 2. Set up the database schema and tables using the provided normalization structure.
 3. Insert the sample data into the respective tables.
 4. Execute SQL queries to solve the listed problems.
 5. Explore query optimization techniques for large datasets.
 
----
 
-## Next Steps
-- **Visualize the Data**: Use a data visualization tool like **Tableau** or **Power BI** to create dashboards based on the query results.
-- **Expand Dataset**: Add more rows to the dataset for broader analysis and scalability testing.
-- **Advanced Querying**: Dive deeper into query optimization and explore the performance of SQL queries on larger datasets.
-
----
 
 ## Contributing
 If you would like to contribute to this project, feel free to fork the repository, submit pull requests, or raise issues.

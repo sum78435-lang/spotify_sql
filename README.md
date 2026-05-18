@@ -80,7 +80,7 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 2. Find the top 5 tracks with the highest energy values.
 3. List all tracks along with their views and likes where `official_video = TRUE`.
 4. For each album, calculate the total views of all associated tracks.
-5. Retrieve the track names that have been streamed on Spotify more than YouTube.
+5. **Retrieve the track names that have been streamed on Spotify more than YouTube.**
 ```sql
 SELECT 
     *
@@ -103,7 +103,7 @@ WHERE
 
 ### Advanced Level
 1. **Find the top 3 most-viewed tracks for each artist using window functions.**
-2. ```sql
+```sql
    with ranking_artist as(
 SELECT 
     artist, 

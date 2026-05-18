@@ -102,7 +102,18 @@ WHERE
 ```   
 
 ### Advanced Level
-1. Find the top 3 most-viewed tracks for each artist using window functions.
+1. **Find the top 3 most-viewed tracks for each artist using window functions.**```sqlwith ranking_artist as(
+SELECT 
+    artist, 
+    track, 
+    SUM(views) as total_view,
+    dense_rank() over(partition by artist order by sum(views) desc) as ranking
+FROM
+    spotify
+GROUP BY 1 , 2
+)
+select * from ranking_artist where ranking <= 3
+order by artist,total_view desc;```
 2. Write a query to find tracks where the liveness score is above the average.
 3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
 ```sql

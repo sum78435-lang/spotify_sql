@@ -102,7 +102,9 @@ WHERE
 ```   
 
 ### Advanced Level
-1. **Find the top 3 most-viewed tracks for each artist using window functions.**```sqlwith ranking_artist as(
+1. **Find the top 3 most-viewed tracks for each artist using window functions.**
+2. ```sql
+   with ranking_artist as(
 SELECT 
     artist, 
     track, 
@@ -113,7 +115,8 @@ FROM
 GROUP BY 1 , 2
 )
 select * from ranking_artist where ranking <= 3
-order by artist,total_view desc;```
+order by artist,total_view desc;
+```
 2. Write a query to find tracks where the liveness score is above the average.
 3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
 ```sql
@@ -130,8 +133,8 @@ from cte
 order by 2 desc;
 ```
    
-5. Find tracks where the energy-to-liveness ratio is greater than 1.2.
-6. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
+4. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+5. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
 
 
 Here’s an updated section for your **Spotify Advanced SQL Project and Query Optimization** README, focusing on the query optimization task you performed. You can include the specific screenshots and graphs as described.
